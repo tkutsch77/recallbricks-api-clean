@@ -259,8 +259,6 @@ router.post('/search', async (req: Request, res: Response): Promise<void> => {
     });
   }
 });
-console.log("✅ POST /search route registered");
-});
 
 /**
  * GET /api/v1/memories/context
