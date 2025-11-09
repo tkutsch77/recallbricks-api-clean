@@ -4,10 +4,13 @@
  * Semantic search and context retrieval for cross-LLM memory
  */
 
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { supabase } from '../config/supabase.js';
 import { authenticateApiKey } from '../middleware/auth.js';
 import { ContextRequest } from '../types/recallbricks.js';
+});
+
+const router = Router();
 
 // Temporary: Create mock user if auth is bypassed
 router.use((req: Request, res: Response, next: NextFunction) => {
@@ -20,8 +23,6 @@ router.use((req: Request, res: Response, next: NextFunction) => {
   }
   next();
 });
-
-const router = Router();
 
 // All routes require authentication
 // router.use(authenticateApiKey);
