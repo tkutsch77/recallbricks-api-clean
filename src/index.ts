@@ -121,8 +121,8 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 // API v1 routes (with authentication and rate limiting)
-app.use('/api/v1/memories', apiKeyRateLimit, memoriesRouter);
-app.use('/api/v1', apiKeyRateLimit, contextRouter);
+app.use('/api/v1/memories', memoriesRouter);
+app.use('/api/v1', contextRouter);
 app.get('/api/v1/rate-limit', apiKeyRateLimit, rateLimitStatusEndpoint);
 
 // 404 handler
