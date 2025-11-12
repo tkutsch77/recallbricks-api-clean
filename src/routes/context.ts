@@ -11,20 +11,8 @@ import { ContextRequest } from '../types/recallbricks.js';
 
 const router = Router();
 
-// Temporary: Create mock user if auth is bypassed
-router.use((req: Request, res: Response, next: NextFunction) => {
-  if (!req.user) {
-    console.log('[CONTEXT AUTH] Creating mock user');
-    req.user = {
-      id: '00000000-0000-0000-0000-000000000001',
-      api_key: 'mock-key'
-    } as any;
-  }
-  next();
-});
-
 // All routes require authentication
-// router.use(authenticateApiKey);
+router.use(authenticateApiKey);
 
 /**
  * POST /api/v1/context

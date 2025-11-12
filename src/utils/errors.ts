@@ -107,6 +107,9 @@ export const Errors = {
   missingApiKey: () =>
     new APIError(ErrorCode.MISSING_API_KEY, 'API key is required. Provide it in the X-API-Key header.', 401),
 
+  unauthorized: (message: string = 'Unauthorized') =>
+    new APIError(ErrorCode.UNAUTHORIZED, message, 401),
+
   validationError: (message: string, details?: Record<string, any>) =>
     new APIError(ErrorCode.VALIDATION_ERROR, message, 400, details),
 

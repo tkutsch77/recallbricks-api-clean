@@ -41,11 +41,14 @@ export interface ContextRequest {
   conversation_history?: string[]; 
 }
 
-// Extend Express Request to include user
+// Extend Express Request to include user and authentication info
 declare global {
   namespace Express {
     interface Request {
       user?: User;
+      userId?: string;
+      userEmail?: string;
+      authMethod?: 'jwt' | 'api-key';
     }
   }
 }

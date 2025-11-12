@@ -59,22 +59,8 @@ async function generateEmbedding(text: string): Promise<number[]> {
   }
 }
 
-// Temporary: Create mock user if auth is bypassed
-router.use((req: Request, res: Response, next: NextFunction) => {
-  if (!req.user) {
-    // Mock user for testing without auth
-    console.log("[AUTH] Creating mock user for request");
-    req.user = {
-      id: '00000000-0000-0000-0000-000000000001',
-      api_key: 'mock-key'
-    } as any;
-  }
-  next();
-});
-
-
 // All routes require authentication
-// router.use(authenticateApiKey);
+router.use(authenticateApiKey);
 
 /**
  * POST /api/v1/memories
